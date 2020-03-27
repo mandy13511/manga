@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
+    "predeploy": "npm run build",
+    "build": "webpack",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -17,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/mandy13511/manga/issues"
   },
-  "homepage": "https://github.com/mandy13511/manga#readme",
+  "homepage": "mandy13511.github.io/manga",
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.0",
@@ -27,6 +29,7 @@
     "babel-preset-vue": "^2.0.2",
     "css-loader": "^3.4.2",
     "file-loader": "^6.0.0",
+    "gh-pages": "^2.2.0",
     "vue-loader": "^15.9.1",
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.6.11",
