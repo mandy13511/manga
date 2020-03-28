@@ -1,5 +1,6 @@
 import Vue from 'vue'
-import hello from './hello.vue'
+import list from './list.vue'
+//import hello from './hello.vue'
 
 new Vue({
   el: '#app',
@@ -7,6 +8,6 @@ new Vue({
     console.log('Hello World');
 
   },
-  components: { hello },
-  template: '<hello/>'
+  components: { list },
+  template: '<list/>'
 })
