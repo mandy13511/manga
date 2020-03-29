@@ -5,14 +5,31 @@
 </head>
 <body>
   <header>
-    <button>#school</button>
-    <button>#magic</button>
-    <button>#comedy</button>
+
   </header>
-  <main>
-    <div id = "app"></div>
+  <main id = "app">
+    <div>
+      <button type = "button" @click = "filter('school')">#school</button>
+      <button type = "button" @click = "filter('comedy')">#comedy</button>
+      <button type = "button" @click = "filter('fantacy')">#fantacy</button>
+    </div>
+    <div>
+      <ul v-if = "showList && showList.length">
+        <li v-for = "manga of showList">
+          <p><strong>{{ manga.chname }}</strong>{{ manga.jpname }}</p>
+          <p>{{ manga.author }}</p>
+          <span v-for = "tag of manga.category.split('/')" style = "margin:2px;">{{ tag }}</span>
+        </li>
+      </ul>
+
+      <ul v-else-if = "errors && errors.length">
+        <li v-for = "error of errors">
+          {{ error.message }}
+        </li>
+      </ul>
+    </div>
   </main>
   <footer></footer>
-<script src = "main.js"></script>
+  <script src = "main.js"></script>
 </body>
 </html>
