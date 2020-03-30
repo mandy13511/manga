@@ -6,7 +6,7 @@
 <body>
   <header>
   </header>
-  <main id = "app">
+  <main id = "app" v-cloak>
     <div class = "container bar">
       <button type = "button"
               class = "btn btn-p"
@@ -58,7 +58,7 @@
       <ul class = "grid-container manga-list" v-if = "showList && showList.length">
         <li v-for = "manga of showList" class = "grid-container manga-content">
           <div class = "content-a">
-            <img :src = "manga.img" style = "max-height: 20rem; max-width: 12rem;">
+            <img v-if = "manga.jpname"　:src = "'../src/img/' + manga.jpname +'.jpg'" style = "max-height: 20rem; max-width: 12rem;">
           </div>
           <div class = "content-b">
             <strong> {{ manga.chname }} </strong><br/>

@@ -10,7 +10,7 @@ new Vue({
     errors: [],
     categorySelected: []
   },
-  created: function() {
+  mounted: function() {
     //Get manga list from google sheet
     axios.get(`https://spreadsheets.google.com/feeds/list/1IZ-cGXnLVp6tv9JxgQh1lZiuUEZ7SQOK8ihrCXJ8Cc8/1/public/values?alt=json`)
     .then(response => {
@@ -29,16 +29,12 @@ new Vue({
         this.showList.sort(() => Math.random() - 0.5);
       }
       //console.log(this.mangaList);
+      //document.getElementById("app").style.visibility = "visible";
     })
     .catch(e => {
       this.errors.push(e)
     })
   },
-  /*computed: {
-    ifSelected: function(pCategory){
-      return (this.categorySelected.includes(pCategory) ? true : false);
-    }
-  },*/
   methods: {
     ifSelected: function(pCategory){
       return (this.categorySelected.includes(pCategory) ? true : false);

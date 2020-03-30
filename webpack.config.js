@@ -12,19 +12,6 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.vue$/,
-        loader: 'vue-loader'
-      },
-      // this will apply to both plain `.js` files
-      // AND `<script>` blocks in `.vue` files
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader'
-      },
-      // this will apply to both plain `.css` files
-      // AND `<style>` blocks in `.vue` files
-      {
         test: /\.css$/,
         use: [
           'vue-style-loader',
@@ -42,6 +29,19 @@ module.exports = {
           'sass-loader',
         ],
       },
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
+      },
+      // this will apply to both plain `.js` files
+      // AND `<script>` blocks in `.vue` files
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader'
+      },
+      // this will apply to both plain `.css` files
+      // AND `<style>` blocks in `.vue` files
       {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
