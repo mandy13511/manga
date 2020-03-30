@@ -5,20 +5,29 @@
 </head>
 <body>
   <header>
-
   </header>
   <main id = "app">
     <div>
-      <button type = "button" @click = "filter('school')">#school</button>
-      <button type = "button" @click = "filter('comedy')">#comedy</button>
-      <button type = "button" @click = "filter('fantacy')">#fantacy</button>
+      <button type = "button" class = "btn" @click = "filter('school')">校園</button>
+      <button type = "button" class = "btn" @click = "filter('fantacy')">奇幻</button>
+      <button type = "button" class = "btn" @click = "filter('comedy')">喜劇</button>
+      <button type = "button" class = "btn" @click = "filter('work')">職場</button>
+      <button type = "button" class = "btn" @click = "filter('touching')">感人</button>
+      <button type = "button" class = "btn" @click = "filter('sweet')">爆甜</button>
+      <button type = "button" class = "btn" @click = "filter('short')">短篇</button>
+      <button type = "button" class = "btn" @click = "filter('long')">長篇</button>
+      <button type = "button" class = "btn" @click = "filter('end')">完結</button>
     </div>
     <div>
       <ul v-if = "showList && showList.length">
         <li v-for = "manga of showList">
-          <p><strong>{{ manga.chname }}</strong>{{ manga.jpname }}</p>
-          <p>{{ manga.author }}</p>
-          <span v-for = "tag of manga.category.split('/')" style = "margin:2px;">{{ tag }}</span>
+          <img :src = "manga.img" style = "hight: 5rem; width: 5rem;">
+          <div>
+            <p><strong>{{ manga.chname }}</p>
+            <p></strong>{{ manga.jpname }}</p>
+            <p>{{ manga.author }}</p>
+            <span v-for = "tag of manga.category.split('/')" style = "margin:2px;">{{ tag }}</span>
+          </div>
         </li>
       </ul>
 

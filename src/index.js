@@ -1,7 +1,6 @@
 import Vue from 'vue'
-import list from './list.vue'
-
 import axios from 'axios';
+import './style.scss';
 
 new Vue({
   el: '#app',
@@ -23,6 +22,7 @@ new Vue({
         item.author = d[i].gsx$author.$t;
         item.score = d[i].gsx$score.$t;
         item.category = d[i].gsx$category.$t;
+        item.img = d[i].gsx$img.$t;
         this.mangaList.push(item);
         this.showList.push(item);
       }

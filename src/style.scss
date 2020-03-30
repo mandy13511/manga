@@ -1,0 +1,30 @@
+$text-color: #5D391E;
+$highlight-color-p: #FD59A6;
+$highlight-color-b: #7CCCF4;
+$highlight-color-y: #FBF640;
+
+$font-size-l: 18px;
+$font-size-m: 12px;
+$font-size-s: 10px;
+
+@media (max-width: 480px) {
+  html {
+    font-size: $font-size-s;
+  }
+}
+@media (max-width: 720px) {
+  html {
+    font-size: $font-size-m;
+  }
+}
+
+@media (max-width: 1200px) {
+  html {
+    font-size: $font-size-l;
+  }
+}
+
+.btn{
+  width: 5rem;
+  hight: 2rem;
+}

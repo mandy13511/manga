@@ -32,6 +32,17 @@ module.exports = {
         ]
       },
       {
+        test: /\.(sass|scss)$/,
+        use: [
+          // Creates `style` nodes from JS strings
+          'style-loader',
+          // Translates CSS into CommonJS
+          'css-loader',
+          // Compiles Sass to CSS
+          'sass-loader',
+        ],
+      },
+      {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
@@ -44,9 +55,9 @@ module.exports = {
     // make sure to include the plugin for the magic
     new VueLoaderPlugin()
   ],
-  resolve: { 
-    alias: { 
-      'vue': 'vue/dist/vue.js' 
-    } 
+  resolve: {
+    alias: {
+      'vue': 'vue/dist/vue.js'
+    }
   }
 }
