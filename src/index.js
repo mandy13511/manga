@@ -25,14 +25,24 @@ new Vue({
         item.img = d[i].gsx$img.$t;
         this.mangaList.push(item);
         this.showList.push(item);
+        //Shuffle
+        this.showList.sort(() => Math.random() - 0.5);
       }
-      console.log(this.mangaList);
+      //console.log(this.mangaList);
     })
     .catch(e => {
       this.errors.push(e)
     })
   },
+  /*computed: {
+    ifSelected: function(pCategory){
+      return (this.categorySelected.includes(pCategory) ? true : false);
+    }
+  },*/
   methods: {
+    ifSelected: function(pCategory){
+      return (this.categorySelected.includes(pCategory) ? true : false);
+    },
     filter: function(pCategory) {
       //Update selected category
       var tCategorySelected = this.categorySelected;
@@ -60,6 +70,8 @@ new Vue({
       this.showList = this.mangaList.filter(function(element) {
         return re.test(element.category);
       });
+      //Shuffle
+      this.showList.sort(() => Math.random() - 0.5);
     }
   }
 })

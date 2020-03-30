@@ -7,26 +7,76 @@
   <header>
   </header>
   <main id = "app">
-    <div>
-      <button type = "button" class = "btn" @click = "filter('school')">校園</button>
-      <button type = "button" class = "btn" @click = "filter('fantacy')">奇幻</button>
-      <button type = "button" class = "btn" @click = "filter('comedy')">喜劇</button>
-      <button type = "button" class = "btn" @click = "filter('work')">職場</button>
-      <button type = "button" class = "btn" @click = "filter('touching')">感人</button>
-      <button type = "button" class = "btn" @click = "filter('sweet')">爆甜</button>
-      <button type = "button" class = "btn" @click = "filter('short')">短篇</button>
-      <button type = "button" class = "btn" @click = "filter('long')">長篇</button>
-      <button type = "button" class = "btn" @click = "filter('end')">完結</button>
+    <div class = "container bar">
+      <button type = "button"
+              class = "btn btn-p"
+              :class = "{ active: ifSelected('school') }"
+              @click = "filter('school')">校園
+      </button>
+      <button type = "button"
+              class = "btn btn-b"
+              :class = "{ active: ifSelected('fantacy') }"
+              @click = "filter('fantacy')">奇幻
+      </button>
+      <button type = "button"
+              class = "btn btn-y"
+              :class = "{ active: ifSelected('comedy') }"
+              @click = "filter('comedy')">喜劇
+      </button>
+      <button type = "button"
+              class = "btn btn-p"
+              :class = "{ active: ifSelected('work') }"
+              @click = "filter('work')">職場
+      </button>
+      <button type = "button"
+              class = "btn btn-b"
+              :class = "{ active: ifSelected('touching') }"
+              @click = "filter('touching')">感人
+      </button>
+      <button type = "button"
+              class = "btn btn-y"
+              :class = "{ active: ifSelected('sweet') }"
+              @click = "filter('sweet')">爆甜
+      </button>
+      <button type = "button"
+              class = "btn btn-p"
+              :class = "{ active: ifSelected('short') }"
+              @click = "filter('short')">短篇
+      </button>
+      <button type = "button"
+              class = "btn btn-b"
+              :class = "{ active: ifSelected('long') }"
+              @click = "filter('long')">長篇
+      </button>
+      <button type = "button"
+              class = "btn btn-y"
+              :class = "{ active: ifSelected('end') }"
+              @click = "filter('end')">完結
+      </button>
     </div>
-    <div>
-      <ul v-if = "showList && showList.length">
-        <li v-for = "manga of showList">
-          <img :src = "manga.img" style = "hight: 5rem; width: 5rem;">
-          <div>
-            <p><strong>{{ manga.chname }}</p>
-            <p></strong>{{ manga.jpname }}</p>
-            <p>{{ manga.author }}</p>
-            <span v-for = "tag of manga.category.split('/')" style = "margin:2px;">{{ tag }}</span>
+    <div class = "conatiner" style = "width: 80%; margin-left: auto; margin-right: auto;">
+      <ul class = "grid-container manga-list" v-if = "showList && showList.length">
+        <li v-for = "manga of showList" class = "grid-container manga-content">
+          <div class = "content-a">
+            <img :src = "manga.img" style = "max-height: 20rem; max-width: 12rem;">
+          </div>
+          <div class = "content-b">
+            <strong> {{ manga.chname }} </strong><br/>
+            <span class = "sub-info"> {{ manga.jpname }} <span><br/>
+            {{ manga.author }}
+          </div>
+          <div class = "content-c">
+            <span class = "tag" v-for = "tag of manga.category.split('/')">
+              {{ tag == "school" ? "#校園" : "" }}
+              {{ tag == "fantacy" ? "#奇幻" : "" }}
+              {{ tag == "comedy" ? "#喜劇" : "" }}
+              {{ tag == "work" ? "#職場" : "" }}
+              {{ tag == "touching" ? "#感人" : "" }}
+              {{ tag == "sweet" ? "#爆甜" : "" }}
+              {{ tag == "short" ? "#短篇" : "" }}
+              {{ tag == "long" ? "#長篇" : "" }}
+              {{ tag == "end" ? "#完結" : "" }}
+            </span>
           </div>
         </li>
       </ul>
