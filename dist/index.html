@@ -61,11 +61,7 @@
             <img v-if = "manga.jpname"　:src = "'../src/img/' + manga.jpname +'.jpg'" style = "max-height: 20rem; max-width: 12rem;">
           </div>
           <div class = "content-b">
-            <strong> {{ manga.chname }} </strong><br/>
-            <span class = "sub-info"> {{ manga.jpname }} <span><br/>
-            {{ manga.author }}
-          </div>
-          <div class = "content-c">
+            <div class = "content-c">
             <span class = "tag" v-for = "tag of manga.category.split('/')">
               {{ tag == "school" ? "#校園" : "" }}
               {{ tag == "fantacy" ? "#奇幻" : "" }}
@@ -77,6 +73,11 @@
               {{ tag == "long" ? "#長篇" : "" }}
               {{ tag == "end" ? "#完結" : "" }}
             </span>
+          </div>
+
+            <strong> {{ manga.chname }} </strong><br/>
+            <span class = "sub-info"> {{ manga.jpname }} <span><br/>
+            {{ manga.author }}
           </div>
         </li>
       </ul>
