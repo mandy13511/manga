@@ -39,6 +39,18 @@ new Vue({
     ifSelected: function(pCategory){
       return (this.categorySelected.includes(pCategory) ? true : false);
     },
+    sortByScore: function() {
+      this.showList.sort(function (a, b) {
+        if (a.score > b.score) {
+          return -1;
+        }
+        if (a.score < b.score) {
+          return 1;
+        }
+        // a must be equal to b
+        return 0;
+      });
+    },
     filter: function(pCategory) {
       //Update selected category
       var tCategorySelected = this.categorySelected;
