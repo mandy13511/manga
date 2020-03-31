@@ -81,9 +81,7 @@ new Vue({
       });
       //Shuffle
       this.showList.sort(() => Math.random() - 0.5);
-      var myDiv = document.getElementByClassName('manga-list');
-      myDiv.innerHTML = variableLongText;
-      myDiv.scrollTop = 0;
+      this.$refs.list.scrollTop = 0;
     }
   }
 })

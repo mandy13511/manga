@@ -20,6 +20,10 @@ module.exports = [
     "chName" : "感人"
   },
   {
+    "enName" : "sweet",
+    "chName" : "爆甜"
+  },
+  {
     "enName" : "short",
     "chName" : "短篇"
   },

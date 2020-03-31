@@ -7,26 +7,29 @@
 </head>
 <body>
   <header class = "header">
+    <img src = "../src/img/logo.svg" style = "object-fit: cover; height: 85%;">
   </header>
   <main id = "app" class = "main" v-cloak>
-    <div class = "container filter-nav">
-      <ul>
-        <li>
-          <button v-for = "(item, index) of category"
+    <div class = "filter-nav">
+      <div class = "container">
+        <ul>
+          <li>
+            <button v-for = "(item, index) of category"
                   type = "button"
                   :class = "[(index % 3 == 0 ? 'btn btn-y' : (index % 3 == 2 ? 'btn btn-p': 'btn btn-b')),
                               {active: categorySelected.includes(item.enName)}]"
                   @click = "filter(item.enName)">
                   {{ item.chName }}
-          </button>
-        </li>
-      </ul>
-    </div>
-    <div class = "detail">
+              </button>
+          </li>
+        </ul>
+      </div>
+      <div class = "detail">
       <a class = "link" @click = "sortByScore()">依照推薦程度排序</a>
       <span> 共 {{showList.length}} 部 <span>
     </div>
-    <div class = "list">
+    </div>
+    <div class = "list" ref="list">
       <ul v-if = "showList && showList.length" class = "grid-container manga-list">
         <li v-for = "manga of showList" class = "grid-container manga-content">
           <div class = "content-d">
