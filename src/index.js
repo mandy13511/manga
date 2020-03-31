@@ -8,6 +8,7 @@ new Vue({
     mangaList: [],
     showList: [],
     errors: [],
+    category: require('./category'),
     categorySelected: []
   },
   mounted: function() {

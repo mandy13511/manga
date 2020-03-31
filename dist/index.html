@@ -1,81 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title> Manga </title>
+  <meta charset="utf-8" />
+  <title> 少女漫畫推薦清單 </title>
+  <meta name = "description" content = "少女漫畫推薦清單" />
 </head>
 <body>
-  <header>
+  <header class = "header">
   </header>
-  <main id = "app" v-cloak>
-    <div class = "container bar">
-      <button type = "button"
-              class = "btn btn-p"
-              :class = "{ active: ifSelected('school') }"
-              @click = "filter('school')">校園
-      </button>
-      <button type = "button"
-              class = "btn btn-b"
-              :class = "{ active: ifSelected('fantacy') }"
-              @click = "filter('fantacy')">奇幻
-      </button>
-      <button type = "button"
-              class = "btn btn-y"
-              :class = "{ active: ifSelected('comedy') }"
-              @click = "filter('comedy')">喜劇
-      </button>
-      <button type = "button"
-              class = "btn btn-p"
-              :class = "{ active: ifSelected('work') }"
-              @click = "filter('work')">職場
-      </button>
-      <button type = "button"
-              class = "btn btn-b"
-              :class = "{ active: ifSelected('touching') }"
-              @click = "filter('touching')">感人
-      </button>
-      <button type = "button"
-              class = "btn btn-y"
-              :class = "{ active: ifSelected('sweet') }"
-              @click = "filter('sweet')">爆甜
-      </button>
-      <button type = "button"
-              class = "btn btn-p"
-              :class = "{ active: ifSelected('short') }"
-              @click = "filter('short')">短篇
-      </button>
-      <button type = "button"
-              class = "btn btn-b"
-              :class = "{ active: ifSelected('long') }"
-              @click = "filter('long')">長篇
-      </button>
-      <button type = "button"
-              class = "btn btn-y"
-              :class = "{ active: ifSelected('end') }"
-              @click = "filter('end')">完結
-      </button>
+  <main id = "app" class = "main" v-cloak>
+    <div class = "container filter-nav">
+      <ul>
+        <li>
+          <button v-for = "(item, index) of category"
+                  type = "button"
+                  :class = "[(index % 3 == 0 ? 'btn btn-y' : (index % 3 == 2 ? 'btn btn-p': 'btn btn-b')),
+                              {active: categorySelected.includes(item.enName)}]"
+                  @click = "filter(item.enName)">
+                  {{ item.chName }}
+          </button>
+        </li>
+      </ul>
     </div>
-    <div class = "conatiner" style = "width: 80%; margin-left: auto; margin-right: auto;">
-      <div class = "detail"><a class = "link" @click = "sortByScore()">依照推薦程度排序</a><span> 共 {{showList.length}} 部 <span></div>
-      <ul class = "grid-container manga-list" v-if = "showList && showList.length">
+    <div class = "detail">
+      <a class = "link" @click = "sortByScore()">依照推薦程度排序</a>
+      <span> 共 {{showList.length}} 部 <span>
+    </div>
+    <div class = "conatiner list">
+      <ul v-if = "showList && showList.length" class = "grid-container manga-list">
         <li v-for = "manga of showList" class = "grid-container manga-content">
           <div class = "content-a">
-            <img v-if = "manga.jpname"　:src = "'../src/img/' + manga.jpname +'.jpg'" style = "max-height: 20rem; max-width: 12rem;">
+            <img  v-if = "manga.jpname"
+                  :src = "'../src/img/' + manga.jpname +'.jpg'"
+                  class = "manga-img"
+                  :title = "manga.chname"
+                  :alt = "manga.chname">
           </div>
           <div class = "content-b">
             <div class = "content-c">
-            <span class = "tag" v-for = "tag of manga.category.split('/')">
-              {{ tag == "school" ? "#校園" : "" }}
-              {{ tag == "fantacy" ? "#奇幻" : "" }}
-              {{ tag == "comedy" ? "#喜劇" : "" }}
-              {{ tag == "work" ? "#職場" : "" }}
-              {{ tag == "touching" ? "#感人" : "" }}
-              {{ tag == "sweet" ? "#爆甜" : "" }}
-              {{ tag == "short" ? "#短篇" : "" }}
-              {{ tag == "long" ? "#長篇" : "" }}
-              {{ tag == "end" ? "#完結" : "" }}
-            </span>
-          </div>
-
+              <span v-for = "tag of manga.category.split('/')" class = "tag">
+                {{ tag == "school" ? "#校園" : "" }}
+                {{ tag == "fantacy" ? "#奇幻" : "" }}
+                {{ tag == "comedy" ? "#喜劇" : "" }}
+                {{ tag == "work" ? "#職場" : "" }}
+                {{ tag == "touching" ? "#感人" : "" }}
+                {{ tag == "sweet" ? "#爆甜" : "" }}
+                {{ tag == "short" ? "#短篇" : "" }}
+                {{ tag == "long" ? "#長篇" : "" }}
+                {{ tag == "end" ? "#完結" : "" }}
+              </span>
+            </div>
             <strong> {{ manga.chname }} </strong><br/>
             <span class = "sub-info"> {{ manga.jpname }} <span><br/>
             {{ manga.author }}
@@ -90,7 +64,7 @@
       </ul>
     </div>
   </main>
-  <footer></footer>
+  <footer class = "footer"></footer>
   <script src = "main.js"></script>
 </body>
 </html>
