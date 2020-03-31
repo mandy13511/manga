@@ -1,10 +1,79 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title> Webpack and Vue </title>
+  <meta charset="utf-8" />
+  <title> 少女漫畫推薦清單 </title>
+  <meta name = "description" content = "少女漫畫推薦清單" />
 </head>
 <body>
-<div id = "app"></div>
-<script src = "main.js"></script>
+  <header class = "header">
+    <img src = "../src/img/logo.svg" style = "object-fit: cover; height: 85%;">
+  </header>
+  <main id = "app" class = "main" v-cloak>
+    <div class = "filter-nav">
+      <div class = "container">
+        <button v-for = "(item, index) of category"
+                type = "button"
+                :class = "[(index % 3 == 0 ? 'btn btn-y' : (index % 3 == 2 ? 'btn btn-p': 'btn btn-b')),
+                              {active: categorySelected.includes(item.enName)}]"
+                @click = "filter(item.enName)">
+                  {{ item.chName }}
+        </button>
+      </div>
+      <div class = "detail">
+      <a class = "link" @click = "sortByScore()">依照推薦程度排序</a>
+      <span> 共 {{showList.length}} 部 <span>
+    </div>
+    </div>
+    <div class = "list" ref="list">
+      <ul v-if = "showList && showList.length" class = "grid-container manga-list">
+        <li v-for = "manga of showList" class = "grid-container manga-content">
+          <div class = "content-d">
+            <img  v-if = "manga.score"
+                  :src = "'../src/img/score' + manga.score + '.svg'"
+                  style = "max-height: 3rem; margin-top: 1rem;">
+          </div>
+          <div class = "content-a">
+            <img  v-if = "manga.jpname"
+                  :src = "'../src/img/' + manga.jpname +'.jpg'"
+                  class = "manga-img"
+                  :title = "manga.chname"
+                  :alt = "manga.chname">
+            <img  v-else = "manga.jpname"
+                  src = "../src/img/noimg.svg"
+                  class = "manga-img"
+                  :title = "manga.chname"
+                  :alt = "manga.chname">
+          </div>
+          <div class = "content-b">
+            <div class = "content-c">
+              <span v-for = "tag of manga.category.split('/')" class = "tag">
+                {{ tag == "school" ? "#校園" : "" }}
+                {{ tag == "fantacy" ? "#奇幻" : "" }}
+                {{ tag == "comedy" ? "#喜劇" : "" }}
+                {{ tag == "work" ? "#職場" : "" }}
+                {{ tag == "touching" ? "#感人" : "" }}
+                {{ tag == "sweet" ? "#爆甜" : "" }}
+                {{ tag == "short" ? "#短篇" : "" }}
+                {{ tag == "long" ? "#長篇" : "" }}
+                {{ tag == "end" ? "#完結" : "" }}
+              </span>
+            </div>
+            <strong> {{ manga.chname }} </strong><br/>
+            <span class = "sub-info"> {{ manga.jpname }} <span><br/>
+            {{ manga.author }}
+          </div>
+        </li>
+      </ul>
+
+      <ul v-else-if = "errors && errors.length">
+        <li v-for = "error of errors">
+          {{ error.message }}
+        </li>
+      </ul>
+    </div>
+  </main>
+  <footer class = "footer"></footer>
+  <script src = "main.js"></script>
 </body>
 </html>
