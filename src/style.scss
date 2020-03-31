@@ -63,6 +63,11 @@ $font-size-s: 14px;
   }
 }
 
+.content-d {
+  grid-area: score;
+  margin-left: auto;
+}
+
 .grid-container {
   display: grid;
   grid-column-gap: 1rem;
@@ -71,10 +76,10 @@ $font-size-s: 14px;
   &.manga-content {
     grid-column-gap: 1rem;
     grid-row-gap: 0rem;
-    grid-template-columns: 45% 55%;
+    grid-template-columns: 15% 35% 50%;
     grid-template-rows: auto;
     grid-template-areas:
-    "image info";
+    "score image info";
   }
 }
 

@@ -26,9 +26,14 @@
       <a class = "link" @click = "sortByScore()">依照推薦程度排序</a>
       <span> 共 {{showList.length}} 部 <span>
     </div>
-    <div class = "conatiner list">
+    <div class = "list">
       <ul v-if = "showList && showList.length" class = "grid-container manga-list">
         <li v-for = "manga of showList" class = "grid-container manga-content">
+          <div class = "content-d">
+            <img  v-if = "manga.score"
+                  :src = "'../src/img/score' + manga.score + '.svg'"
+                  style = "max-height: 3rem; margin-top: 1rem;">
+          </div>
           <div class = "content-a">
             <img  v-if = "manga.jpname"
                   :src = "'../src/img/' + manga.jpname +'.jpg'"
