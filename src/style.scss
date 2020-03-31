@@ -8,7 +8,8 @@ $font-size-m: 16px;
 $font-size-s: 14px;
 
 $header-height: 7vh;
-$fileter-nav-height: 11vh;
+$filter-nav-height: 11vh;
+$detail-height: 3vh;
 $footer-height: 5vh;
 
 /* desktops */
@@ -90,7 +91,7 @@ $footer-height: 5vh;
   }
 }
 
-@media screen and (min-device-width: 1200px) {
+@media screen and (min-device-width: 767.98px) {
   .manga-list {
     grid-template-columns: 40% 40%;
     justify-content: center;
@@ -98,7 +99,10 @@ $footer-height: 5vh;
 }
 
 /* Button */
-button:focus {outline:0;}
+button:focus {
+  outline:0;
+  font-size: 1rem;
+}
 
 .btn {
   margin: 0.5rem;
@@ -139,7 +143,15 @@ button:focus {outline:0;}
 ul {
   list-style-type: none;
   padding: 0px;
-  margin: 1rem;
+  margin: 0px;
+}
+
+@media (min-width: 500px) {
+  ul {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 [v-cloak]{
@@ -149,10 +161,18 @@ ul {
 /* Text */
 .detail {
   margin-right: 10vw;
+  margin-top: 2vh;
   text-align: right;
   color: $highlight-color-b;
   font-size: 0.8rem;
   letter-spacing: 0.2rem;
+}
+
+/* tablets */
+@media (max-width: 1199.98px) {
+  .detail {
+    margin-right: 5vw;
+  }
 }
 
 .link {
@@ -193,18 +213,25 @@ ul {
   position:absolute;
   top: $header-height;
   left: 0px;
-  height: $fileter-nav-height;
   right: 0px;
   overflow: hidden;
 }
 
 .list {
   position: absolute;
-  top: $header-height + $fileter-nav-height +1vh;
+  top: $header-height + $filter-nav-height + $detail-height;
   bottom: $footer-height;
   left: 0px;
   right: 0px;
   overflow: auto;
+}
+
+/* phones */
+@media (max-width: 500px) {
+  .list {
+    top: $header-height * 0.6 + $detail-height;
+    bottom: $footer-height;
+  }
 }
 
 /* Footer */

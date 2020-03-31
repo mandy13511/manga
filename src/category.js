@@ -16,6 +16,10 @@ module.exports = [
     "chName" : "職場"
   },
   {
+    "enName" : "costume",
+    "chName" : "古裝"
+  },
+  {
     "enName" : "touching",
     "chName" : "感人"
   },

@@ -12,17 +12,13 @@
   <main id = "app" class = "main" v-cloak>
     <div class = "filter-nav">
       <div class = "container">
-        <ul>
-          <li>
-            <button v-for = "(item, index) of category"
-                  type = "button"
-                  :class = "[(index % 3 == 0 ? 'btn btn-y' : (index % 3 == 2 ? 'btn btn-p': 'btn btn-b')),
+        <button v-for = "(item, index) of category"
+                type = "button"
+                :class = "[(index % 3 == 0 ? 'btn btn-y' : (index % 3 == 2 ? 'btn btn-p': 'btn btn-b')),
                               {active: categorySelected.includes(item.enName)}]"
-                  @click = "filter(item.enName)">
+                @click = "filter(item.enName)">
                   {{ item.chName }}
-              </button>
-          </li>
-        </ul>
+        </button>
       </div>
       <div class = "detail">
       <a class = "link" @click = "sortByScore()">依照推薦程度排序</a>
@@ -40,6 +36,11 @@
           <div class = "content-a">
             <img  v-if = "manga.jpname"
                   :src = "'../src/img/' + manga.jpname +'.jpg'"
+                  class = "manga-img"
+                  :title = "manga.chname"
+                  :alt = "manga.chname">
+            <img  v-else = "manga.jpname"
+                  src = "../src/img/noimg.svg"
                   class = "manga-img"
                   :title = "manga.chname"
                   :alt = "manga.chname">
