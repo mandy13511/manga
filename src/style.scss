@@ -13,21 +13,21 @@ $detail-height: 3vh;
 $footer-height: 5vh;
 
 /* desktops */
-@media (min-width: 1200px) {
+@media screen and (min-device-width: 1200px) {
   html {
     font-size: $font-size-l;
   }
 }
 
 /* tablets */
-@media (max-width: 1199.98px) {
+@media screen and (min-device-width: 1199.98px) {
   html {
     font-size: $font-size-m;
   }
 }
 
 /* phones */
-@media (max-width: 767.98px) {
+@media screen and (max-device-width: 767.98px) {
   html {
     font-size: $font-size-s;
   }
@@ -68,6 +68,16 @@ $footer-height: 5vh;
   .tag {
     letter-spacing: 0.2rem;
     font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-device-width: 500px) {
+  .content-c {
+    max-height: 2.5rem;
+
+    .tag {
+      font-size: 2rem;
+    }
   }
 }
 
@@ -139,6 +149,20 @@ button:focus {
   }
 }
 
+@media screen and (max-device-width: 500px) {
+  .btn {
+    width: 10rem;
+    height: 4.5rem;
+    font-size: 2.5rem;
+  }
+
+  .btn-area {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
 /* List */
 ul {
   list-style-type: none;
@@ -146,7 +170,7 @@ ul {
   margin: 0px;
 }
 
-@media (min-width: 500px) {
+@media screen and (max-device-width: 500px) {
   ul {
     width: 80%;
     margin-left: auto;
@@ -168,10 +192,24 @@ ul {
   letter-spacing: 0.2rem;
 }
 
+.manga-title {
+  font-size: 1.2rem;
+}
+
 /* tablets */
-@media (max-width: 1199.98px) {
+@media screen and (max-device-width: 1199.98px) {
   .detail {
     margin-right: 5vw;
+  }
+}
+
+@media screen and (max-device-width: 500px) {
+  .detail {
+    font-size: 2rem;
+  }
+
+  .manga-title {
+    font-size: 1rem;
   }
 }
 
@@ -227,9 +265,9 @@ ul {
 }
 
 /* phones */
-@media (max-width: 500px) {
+@media screen and (max-device-width: 500px) {
   .list {
-    top: $header-height * 0.6 + $detail-height;
+    top: $header-height + $filter-nav-height * 0.9 + $detail-height;
     bottom: $footer-height;
   }
 }
