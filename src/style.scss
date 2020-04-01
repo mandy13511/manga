@@ -244,7 +244,7 @@ ul {
 .list {
   position: absolute;
   top: $header-height + $filter-nav-height + $detail-height;
-  //bottom: $footer-height;
+  bottom: 0px;
   left: 0px;
   right: 0px;
   overflow: auto;
