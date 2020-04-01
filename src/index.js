@@ -28,7 +28,7 @@ new Vue({
         this.showList.push(item);
         //Shuffle
         this.showList.sort(() => Math.random() - 0.5);
-        this.$refs.footer.style.display = "flex";
+        //this.$refs.footer.style.display = "flex";
       }
       //console.log(this.mangaList);
       //document.getElementById("app").style.visibility = "visible";
