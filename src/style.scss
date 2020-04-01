@@ -10,7 +10,7 @@ $font-size-s: 14px;
 $header-height: 7vh;
 $filter-nav-height: 8vh;
 $detail-height: 3vh;
-$footer-height: 5vh;
+$footer-height: 2vh;
 
 /* desktops */
 @media screen and (min-device-width: 1200px) {
@@ -163,7 +163,6 @@ ul {
 @media screen and (max-device-width: 500px) {
   ul {
     width: 80%;
-    //margin-left: auto;
     margin-right: auto;
   }
 }
@@ -244,7 +243,7 @@ ul {
 .list {
   position: absolute;
   top: $header-height + $filter-nav-height + $detail-height;
-  bottom: $footer-height;
+  //bottom: $footer-height;
   left: 0px;
   right: 0px;
   overflow: auto;
@@ -260,11 +259,21 @@ ul {
 
 /* Footer */
 .footer {
-  position: fixed;
+  //position: absolute;
+  display: none;
+  justify-content: center;
+  align-items: center;
   bottom: 0px;
   left: 0px;
   height: $footer-height;
   width: 100%;
   background-color: $highlight-color-p;
   color: white;
+  font-size: $footer-height * 0.4;
+}
+
+@media screen and (max-device-width: 500px) {
+  .footer {
+    height: $footer-height * 0.7;
+  }
 }
