@@ -26,7 +26,7 @@
       <span> 共 {{showList.length}} 部 <span>
     </div>
     </div>
-    <div class = "list" ref="list">
+    <div class = "list" ref = "list">
       <ul v-if = "showList && showList.length" class = "grid-container manga-list">
         <li v-for = "manga of showList" class = "grid-container manga-content">
           <div class = "content-d">
@@ -72,9 +72,11 @@
           {{ error.message }}
         </li>
       </ul>
+      <footer class = "footer" ref = "footer">
+        Copyright (c) 2020 by Mandy Chien
+      </footer>
     </div>
   </main>
-  <footer class = "footer"></footer>
   <script src = "main.js"></script>
 </body>
 </html>
