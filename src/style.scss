@@ -253,7 +253,7 @@ ul {
 @media screen and (max-device-width: 500px) {
   .list {
     top: $header-height + $filter-nav-height * 2.1 + $detail-height;
-    bottom: $footer-height;
+    //bottom: $footer-height;
   }
 }
 
