@@ -7,7 +7,7 @@
 </head>
 <body>
   <header class = "header">
-    <img src = "../src/img/logo.svg" style = "object-fit: cover; height: 85%;">
+    <img src = "src/img/logo.svg" style = "object-fit: cover; height: 85%;">
   </header>
   <main id = "app" class = "main" v-cloak>
     <div class = "filter-nav">
@@ -15,8 +15,8 @@
         <button v-for = "(item, index) of category"
                 type = "button"
                 :class = "[(index % 3 == 0 ? 'btn btn-y' : (index % 3 == 2 ? 'btn btn-p': 'btn btn-b')),
-                              {active: ifSelected(item.enName)}]"
-                @click = "filter(item.enName)">
+                              {active: ifSelected(item.enName) == true}]"
+                @mousedown = "filter(item.enName)">
                   {{ item.chName }}
         </button>
       </div>
@@ -30,17 +30,17 @@
         <li v-for = "manga of showList" class = "grid-container manga-content">
           <div class = "content-d">
             <img  v-if = "manga.score"
-                  :src = "'../src/img/score' + manga.score + '.svg'"
+                  :src = "'src/img/score' + manga.score + '.svg'"
                   style = "max-height: 3rem; margin-top: 1rem;">
           </div>
           <div class = "content-a">
             <img  v-if = "manga.jpname"
-                  :src = "'../src/img/' + manga.jpname +'.jpg'"
+                  :src = "'src/img/' + manga.jpname +'.jpg'"
                   class = "manga-img"
                   :title = "manga.chname"
                   :alt = "manga.chname">
             <img  v-else = "manga.jpname"
-                  src = "../src/img/noimg.svg"
+                  src = "src/img/noimg.svg"
                   class = "manga-img"
                   :title = "manga.chname"
                   :alt = "manga.chname">
