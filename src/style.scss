@@ -128,20 +128,20 @@ button:focus {
 }
 
 .btn-p {
-  &:hover, &.active {
+  &.active {
     background-color: $highlight-color-p;
     color: white;
   }
 }
 
 .btn-b{
-  &:hover, &.active {
+  &.active {
     background-color: $highlight-color-b;
   }
 }
 
 .btn-y {
-  &:hover, &.active {
+  &.active {
     background-color: $highlight-color-y;
   }
 }

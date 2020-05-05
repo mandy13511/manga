@@ -33,12 +33,8 @@
                 type = "button"
                 :class = "[(index % 3 == 0 ? 'btn btn-y' : (index % 3 == 2 ? 'btn btn-p': 'btn btn-b')),
                               {active: ifSelected(item.enName) == true}]"
-                @mousedown = "filter(item.enName)">
-                <!--button v-for = "(item, index) of category"
-                        type = "button"
-                        :class = "[(index % 3 == 0 ? 'btn btn-y' : (index % 3 == 2 ? 'btn btn-p': 'btn btn-b')),
-                                      (school ? 'active' : '')]"
-                        @click = "school = !school"-->
+                @mousedown = "filter(item.enName)" id = "abc">
+
                   {{ item.chName }}
         </button>
       </div>
