@@ -33,7 +33,8 @@
                 type = "button"
                 :class = "[(index % 3 == 0 ? 'btn btn-y' : (index % 3 == 2 ? 'btn btn-p': 'btn btn-b')),
                               {active: ifSelected(item.enName) == true}]"
-                @mousedown = "filter(item.enName)">
+                @mousedown = "filter(item.enName)" id = "abc">
+
                   {{ item.chName }}
         </button>
       </div>
@@ -69,6 +70,7 @@
                 {{ tag == "fantacy" ? "#奇幻" : "" }}
                 {{ tag == "comedy" ? "#喜劇" : "" }}
                 {{ tag == "work" ? "#職場" : "" }}
+                {{ tag == "costume" ? "#古裝" : "" }}
                 {{ tag == "touching" ? "#感人" : "" }}
                 {{ tag == "sweet" ? "#爆甜" : "" }}
                 {{ tag == "short" ? "#短篇" : "" }}
@@ -89,6 +91,7 @@
         </li>
       </ul>
     </div>
+    <div id = "scrollTop" @click = "scrollToTop()"><font-awesome-icon icon = "arrow-up" style = "color: #5D391E" /></div>
     <footer class = "footer" ref = "footer">
       <span style = "margin-right: 2rem;">(c) 2020 by Mandy Chien</span>
     </footer>
