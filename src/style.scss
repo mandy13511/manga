@@ -6,6 +6,7 @@ $highlight-color-y: #FBF640;
 $font-size-l: 18px;
 $font-size-m: 16px;
 $font-size-s: 14px;
+$font-size-ss: 10px;
 
 $header-height: 7vh;
 $filter-nav-height: 8vh;
@@ -30,6 +31,13 @@ $footer-height: 2vh;
 @media screen and (max-device-width: 767.98px) {
   html {
     font-size: $font-size-s;
+  }
+}
+
+/* small phones */
+@media screen and (max-device-width: 325px) {
+  html {
+    font-size: $font-size-ss;
   }
 }
 
@@ -115,6 +123,7 @@ button:focus {
   margin: 0.5rem;
   width: 5rem;
   height: 1.8rem;
+  cursor: pointer;
   font-size: 1rem;
   background-color: white;
   color: $text-color;
@@ -265,7 +274,8 @@ ul {
 @media screen and (max-device-width: 500px) {
   .main {
     margin-top: $header-height;
-    overflow: auto;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
   }
 
   .filter-nav {
@@ -313,12 +323,16 @@ ul {
   height:2rem;
   bottom: 1rem;
   right: 1rem;
-  border: solid 1px $text-color;
+  background-color: white;
+  border: 0.5px solid $text-color;
   border-radius: 5px;
+  box-shadow: 3px 3px 3px rgba(0,0,0,0.16);
+  -moz-box-shadow: 3px 3px 3px rgba(0,0,0,0.16);
+  -webkit-box-shadow: 3px 3px 3px rgba(0,0,0,0.16);
 }
 
 @media screen and (max-device-width: 500px) {
   #scrollTop {
-    display: flex;
+    //display: flex;
   }
 }

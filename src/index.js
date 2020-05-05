@@ -19,6 +19,16 @@ new Vue({
     school: false,
     categorySelected: []
   },
+  created () {
+    if (screen.width <= 500) {
+      window.addEventListener('scroll', this.handleScroll);
+    }
+  },
+  destroyed () {
+    if (screen.width <= 500){
+      window.removeEventListener('scroll', this.handleScroll);
+    }
+  },
   mounted: function() {
     //Get manga list from google sheet
     axios.get(`https://spreadsheets.google.com/feeds/list/1IZ-cGXnLVp6tv9JxgQh1lZiuUEZ7SQOK8ihrCXJ8Cc8/1/public/values?alt=json`)
@@ -46,6 +56,15 @@ new Vue({
     })
   },
   methods: {
+    handleScroll: function(event) {
+      //Show scroll to top button when scrolling
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById('scrollTop').style.display = "flex";
+      }
+      else {
+        document.getElementById('scrollTop').style.display = "none";
+      }
+    },
     ifSelected: function(pCategory){
       return (this.categorySelected.includes(pCategory) ? true : false);
     },
@@ -93,7 +112,6 @@ new Vue({
       this.$refs.list.scrollTop = 0;
     },
     scrollToTop: function() {
-      console.log("scroll");
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }
