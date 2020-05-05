@@ -46,10 +46,7 @@ new Vue({
         this.showList.push(item);
         //Shuffle
         this.showList.sort(() => Math.random() - 0.5);
-        //this.$refs.footer.style.display = "flex";
       }
-      //console.log(this.mangaList);
-      //document.getElementById("app").style.visibility = "visible";
     })
     .catch(e => {
       this.errors.push(e)
@@ -79,6 +76,13 @@ new Vue({
         // a must be equal to b
         return 0;
       });
+    },
+    convertTochName: function(pTagEnName) {
+      for (var element of this.category) {
+        if (pTagEnName == element.enName) {
+          return "＃" + element.chName;
+        }
+      }
     },
     filter: function(pCategory) {
       //Update selected category
