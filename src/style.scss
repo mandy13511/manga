@@ -302,3 +302,23 @@ ul {
     font-size: 8px;
   }
 }
+
+/* Scroll to top button */
+#scrollTop {
+  position: fixed;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 2rem;
+  height:2rem;
+  bottom: 1rem;
+  right: 1rem;
+  border: solid 1px $text-color;
+  border-radius: 5px;
+}
+
+@media screen and (max-device-width: 500px) {
+  #scrollTop {
+    display: flex;
+  }
+}

@@ -1,6 +1,13 @@
 import Vue from 'vue'
 import axios from 'axios';
 import './style.scss';
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+
+library.add(fas);
+
+Vue.component("font-awesome-icon", FontAwesomeIcon);
 
 new Vue({
   el: '#app',
@@ -84,6 +91,10 @@ new Vue({
       //Shuffle
       this.showList.sort(() => Math.random() - 0.5);
       this.$refs.list.scrollTop = 0;
+    },
+    scrollToTop: function() {
+      console.log("scroll");
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }
 })
