@@ -61,7 +61,8 @@ $footer-height: 2vh;
 .content-c {
   grid-area: tag;
   display: flex;
-  max-height: 1rem;
+  flex-wrap: wrap;
+  //max-height: 1rem;
   align-self: flex-end;
   color: rgba(104,194,194,0.8);
 
@@ -225,6 +226,16 @@ ul {
   overflow: hidden;
 }
 
+/* phones */
+@media screen and (max-device-width: 500px) {
+  .header {
+    position: fixed;
+    background-color: white;
+    z-index: 1;
+  }
+}
+
+
 /* Main */
 .main {
   height:100%;
@@ -234,7 +245,7 @@ ul {
 }
 
 .filter-nav {
-  position:absolute;
+  position: absolute;
   top: $header-height;
   left: 0px;
   right: 0px;
@@ -252,9 +263,20 @@ ul {
 
 /* phones */
 @media screen and (max-device-width: 500px) {
+  .main {
+    margin-top: $header-height;
+    overflow: auto;
+  }
+
+  .filter-nav {
+    position: inherit;
+  }
+
   .list {
+    position: inherit;
     top: $header-height + $filter-nav-height * 2.1 + $detail-height;
     bottom: 0px;
+    overflow: unset;
   }
 }
 

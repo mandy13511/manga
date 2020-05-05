@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server --devtool eval --progress --colors --content-base predeploy",
     "predeploy": "npm run build",
     "build": "webpack",
     "deploy": "gh-pages -d dist"

@@ -34,6 +34,11 @@
                 :class = "[(index % 3 == 0 ? 'btn btn-y' : (index % 3 == 2 ? 'btn btn-p': 'btn btn-b')),
                               {active: ifSelected(item.enName) == true}]"
                 @mousedown = "filter(item.enName)">
+                <!--button v-for = "(item, index) of category"
+                        type = "button"
+                        :class = "[(index % 3 == 0 ? 'btn btn-y' : (index % 3 == 2 ? 'btn btn-p': 'btn btn-b')),
+                                      (school ? 'active' : '')]"
+                        @click = "school = !school"-->
                   {{ item.chName }}
         </button>
       </div>
@@ -69,6 +74,7 @@
                 {{ tag == "fantacy" ? "#奇幻" : "" }}
                 {{ tag == "comedy" ? "#喜劇" : "" }}
                 {{ tag == "work" ? "#職場" : "" }}
+                {{ tag == "costume" ? "#古裝" : "" }}
                 {{ tag == "touching" ? "#感人" : "" }}
                 {{ tag == "sweet" ? "#爆甜" : "" }}
                 {{ tag == "short" ? "#短篇" : "" }}

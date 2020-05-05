@@ -9,6 +9,7 @@ new Vue({
     showList: [],
     errors: [],
     category: require('./category'),
+    school: false,
     categorySelected: []
   },
   mounted: function() {
