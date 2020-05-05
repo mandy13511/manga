@@ -40,7 +40,7 @@
       </div>
       <div class = "detail">
       <a class = "link" @click = "sortByScore()">依照推薦程度排序</a>
-      <span> 共 {{showList.length}} 部 <span>
+      <span> 共 {{ showList.length }} 部 <span>
     </div>
     </div>
     <div class = "list" ref = "list">
@@ -66,6 +66,7 @@
           <div class = "content-b">
             <div class = "content-c">
               <span v-for = "tag of manga.category.split('/')" class = "tag">
+                {{ this.category.find(element.cnName => tag = element.enName) }}
                 {{ tag == "school" ? "#校園" : "" }}
                 {{ tag == "fantacy" ? "#奇幻" : "" }}
                 {{ tag == "comedy" ? "#喜劇" : "" }}
