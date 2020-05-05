@@ -1,7 +1,7 @@
 # manga
 show my gilr's comic list
 
-##technologies
+## technologies
 - vue
 - scss
 - webpack
