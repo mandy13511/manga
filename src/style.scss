@@ -263,7 +263,6 @@ ul {
 
 .list {
   position: absolute;
-  display: flex;
   top: $header-height + $filter-nav-height + $detail-height;
   bottom: 0px;
   left: 0px;
@@ -271,6 +270,7 @@ ul {
   overflow: auto;
 
   &.center {
+    display: flex;
     justify-content: center;
     align-items: center;
     height: 60vh;
