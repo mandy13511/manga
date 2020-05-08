@@ -32,9 +32,8 @@
         <button v-for = "(item, index) of category"
                 type = "button"
                 :class = "[(index % 3 == 0 ? 'btn btn-y' : (index % 3 == 2 ? 'btn btn-p': 'btn btn-b')),
-                              {active: ifSelected(item.enName) == true}]"
+                              { active: ifSelected(item.enName) == true }]"
                 @mousedown = "filter(item.enName)" id = "abc">
-
                   {{ item.chName }}
         </button>
       </div>
@@ -43,7 +42,8 @@
       <span> 共 {{ showList.length }} 部 <span>
     </div>
     </div>
-    <div class = "list" ref = "list">
+    <div class = "list" :class = "{ center: loading }" ref = "list">
+      <div class = "lds-ellipsis" v-show = "loading"><div></div><div></div><div></div><div></div></div>
       <ul v-if = "showList && showList.length" class = "grid-container manga-list">
         <li v-for = "manga of showList" class = "grid-container manga-content">
           <div class = "content-d">
