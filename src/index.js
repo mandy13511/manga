@@ -14,6 +14,7 @@ new Vue({
   data: {
     mangaList: [],
     showList: [],
+    loading: true,
     errors: [],
     category: require('./category'),
     school: false,
@@ -46,6 +47,7 @@ new Vue({
         this.showList.push(item);
         //Shuffle
         this.showList.sort(() => Math.random() - 0.5);
+        this.loading = false;
       }
     })
     .catch(e => {
