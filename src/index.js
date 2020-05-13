@@ -42,7 +42,7 @@ new Vue({
         item.author = d[i].gsx$author.$t;
         item.score = d[i].gsx$score.$t;
         item.category = d[i].gsx$category.$t;
-        item.img = d[i].gsx$img.$t;
+        item.date = new Date(d[i].gsx$date.$t);
         this.mangaList.push(item);
         this.showList.push(item);
         //Shuffle
@@ -68,7 +68,7 @@ new Vue({
       return (this.categorySelected.includes(pCategory) ? true : false);
     },
     sortByScore: function() {
-      this.showList.sort(function (a, b) {
+      this.showList.sort(function(a, b) {
         if (a.score > b.score) {
           return -1;
         }
@@ -78,6 +78,9 @@ new Vue({
         // a must be equal to b
         return 0;
       });
+    },
+    sortByDate: function() {
+      this.showList.sort((a, b) => b.date - a.date);
     },
     convertTochName: function(pTagEnName) {
       for (var element of this.category) {

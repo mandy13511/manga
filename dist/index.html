@@ -38,8 +38,9 @@
         </button>
       </div>
       <div class = "detail">
-      <a class = "link" @click = "sortByScore()">依照推薦程度排序</a>
-      <span> 共 {{ showList.length }} 部 <span>
+      <a class = "link" @click = "sortByScore()">推薦排序</a>
+      <a class = "link" @click = "sortByDate()">日期排序</a>
+      <span> 共 {{ showList.length }} 部 </span>
     </div>
     </div>
     <div class = "list" :class = "{ center: loading }" ref = "list">
