@@ -20,18 +20,18 @@ new Vue({
     school: false,
     categorySelected: []
   },
-  created () {
+  created: function() {
     if (screen.width <= 500) {
       window.addEventListener('scroll', this.handleScroll);
     }
   },
-  destroyed () {
+  destroyed: function() {
     if (screen.width <= 500){
       window.removeEventListener('scroll', this.handleScroll);
     }
   },
   mounted: function() {
-    //Get manga list from google sheet
+    document.getElementsByTagName("body")[0].style.display = "block";
     axios.get(`https://spreadsheets.google.com/feeds/list/1IZ-cGXnLVp6tv9JxgQh1lZiuUEZ7SQOK8ihrCXJ8Cc8/1/public/values?alt=json`)
     .then(response => {
       var d = response.data.feed.entry;
