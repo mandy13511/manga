@@ -4,6 +4,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const CopyPlugin = require('copy-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const imageminMozjpeg = require('imagemin-mozjpeg');
+var webpack = require('webpack');
 
 module.exports = {
   entry: './src/index.js',
@@ -11,7 +12,7 @@ module.exports = {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist')
   },
-  mode: 'development',
+  mode: 'production',
   module: {
     rules: [
       {
@@ -67,11 +68,16 @@ module.exports = {
       test: /\.(jpe?g|png|gif|svg)$/i,
       pngquant: ({quality: 60}),
       plugins: [imageminMozjpeg({quality: 40})]
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production')
     })
   ],
   resolve: {
     alias: {
-      'vue': 'vue/dist/vue.js'
+      //'vue': 'vue/dist/vue.js'
+      //production mode
+      'vue': 'vue/dist/vue.common.js'
     }
   }
 }
