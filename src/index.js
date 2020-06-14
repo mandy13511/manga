@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import VueLazyload from 'vue-lazyload';
 import axios from 'axios';
 import './style.scss';
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -8,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 library.add(fas);
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
+Vue.use(VueLazyload);
 
 new Vue({
   el: '#app',
@@ -43,6 +45,7 @@ new Vue({
         item.score = d[i].gsx$score.$t;
         item.category = d[i].gsx$category.$t;
         item.date = new Date(d[i].gsx$date.$t);
+        item.src = 'img/' + d[i].gsx$jpname.$t + '.jpg';
         this.mangaList.push(item);
         this.showList.push(item);
         //Shuffle

@@ -50,19 +50,20 @@
           <div class = "content-d">
             <img  v-if = "manga.score"
                   :src = "'img/score' + manga.score + '.svg'"
-                  style = "max-height: 3rem; margin-top: 1rem;">
+                  style = "max-height: 3rem; margin-top: 1rem;"/>
           </div>
-          <div class = "content-a">
+          <div  class = "content-a">
             <img  v-if = "manga.jpname"
-                  :src = "'img/' + manga.jpname +'.jpg'"
+                  v-lazy = "manga.src"
                   class = "manga-img"
                   :title = "manga.chname"
-                  :alt = "manga.chname">
-            <img  v-else = "manga.jpname"
+                  :alt = "manga.chname"/>
+            <img  v-else
                   src = "img/noimg.svg"
                   class = "manga-img"
                   :title = "manga.chname"
-                  :alt = "manga.chname">
+                  :alt = "manga.chname"/>
+
           </div>
           <div class = "content-b">
             <div class = "content-c">
