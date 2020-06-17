@@ -1,5 +1,5 @@
 # manga
-show my gilr's comic list
+show my girl's comics list
 
 ## technologies
 - vue
