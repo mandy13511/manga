@@ -13,6 +13,10 @@ $filter-nav-height: 8vh;
 $detail-height: 3vh;
 $footer-height: 2vh;
 
+html, body {
+  font-family: "PingFang", "Microsoft JhengHei", "Tahoma", "Arial";
+}
+
 /* desktops */
 @media screen and (min-device-width: 1200px) {
   html {
