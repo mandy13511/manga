@@ -1,8 +1,13 @@
 # manga
+![](./screenshot.png)
 show my girl's comics list
 
 ## technologies
 - vue
-- scss
+- sass
 - webpack
 
+## practice
+- webpack
+- css grid system
+- image lazy load
