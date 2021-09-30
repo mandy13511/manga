@@ -227,9 +227,6 @@ ul {
   transition:all 2.5s;
 }
 
- .manga-img[lazy=loading] {
-}
-
 .manga-img[lazy=loaded] {
   animation: fadein 2.5s;
 }

@@ -1,8 +1,9 @@
 <template>
   <div id="app">
-    <div class = "filter-nav">
-      <div class = "container btn-area">
+    <div class="filter-nav">
+      <div class="container btn-area">
         <button v-for="(item, index) of category"
+                :key="item.enName"
                 type="button"
                 :class="[(index % 3 == 0 ? 'btn btn-y' : (index % 3 == 2 ? 'btn btn-p': 'btn btn-b')),
                               { active: ifSelected(item.enName) == true }]"
@@ -12,78 +13,80 @@
       </div>
       <div class = "detail">
       <a class="link" @click="sortByScore()">推薦排序</a>
-      <a class = "link" @click="sortByDate()">日期排序</a>
+      <a class="link" @click="sortByDate()">日期排序</a>
       <span> 共 {{ showList.length }} 部 </span>
     </div>
     </div>
-    <div class = "list" :class = "{ center: loading }" ref = "list">
-      <div class = "lds-ellipsis" v-show = "loading"><div></div><div></div><div></div><div></div></div>
-      <ul v-if = "showList && showList.length" class = "grid-container manga-list">
-        <li v-for="manga of showList" class="grid-container manga-content">
-          <div class = "content-d">
-            <img  v-if = "manga.score > 1"
-                  :src = "'img/score' + manga.score + '.png'"
-                  style = "max-height: 3rem; margin-top: 1rem;"/>
+    <div class="list" :class="{ center: loading }" ref = "list">
+      <div class="lds-ellipsis" v-show="loading"><div></div><div></div><div></div><div></div></div>
+      <ul v-if="showList && showList.length" class="grid-container manga-list">
+        <li v-for="manga of showList" 
+            :key="manga.jpname"
+            class="grid-container manga-content">
+          <div class="content-d">
+            <img  v-if="manga.score > 1"
+                  :src="'img/score' + manga.score + '.png'"
+                  style="max-height: 3rem; margin-top: 1rem;"/>
           </div>
-          <div  class = "content-a">
-            <img  v-if = "manga.jpname"
-                  v-lazy = "manga.src"
-                  class = "manga-img"
-                  :title = "manga.chname"
-                  :alt = "manga.chname"/>
+          <div  class="content-a">
+            <img  v-if="manga.jpname"
+                  v-lazy="manga.src"
+                  class="manga-img"
+                  :title="manga.chname"
+                  :alt="manga.chname"/>
             <img  v-else
-                  src = "img/noimg.png"
-                  class = "manga-img"
-                  :title = "manga.chname"
-                  :alt = "manga.chname"/>
-
+                  src="img/noimg.png"
+                  class="manga-img"
+                  :title="manga.chname"
+                  :alt="manga.chname"/>
           </div>
-          <div class = "content-b">
-            <div class = "content-c">
-              <span v-for="tag of manga.category.split('/')" class ="tag">
+          <div class="content-b">
+            <div class="content-c">
+              <span v-for="(tag,index) of manga.category.split('/')" 
+                    :key="tag+index"
+                    class="tag">
                 {{ convertTochName(tag) }}
               </span>
             </div>
-            <strong class = "manga-title"> {{ manga.chname }} </strong><br/>
-            <span class = "sub-info"> {{ manga.jpname }} <span><br/>
+            <strong class="manga-title">{{ manga.chname }}</strong><br/>
+            <span class="sub-info">{{ manga.jpname }}</span><br/>
             {{ manga.author }}
           </div>
         </li>
       </ul>
-
-      <ul v-else-if = "errors && errors.length">
-        <li v-for = "error of errors">
+      <ul v-else-if="errors && errors.length">
+        <li v-for="error of errors" :key="error">
           {{ error.message }}
         </li>
       </ul>
     </div>
-    <button id = "scrollTop" @click = "scrollToTop()"><font-awesome-icon icon = "arrow-up" style = "color: #5D391E" /></button>
-    <footer class = "footer" ref = "footer">
-      <span style = "margin-right: 2rem;">(c) 2021 by Mandy Chien</span>
+    <button id="scrollTop" @click = "scrollToTop()">
+      <!--font-awesome-icon icon="arrow-up" style="color: #5D391E" /-->
+    </button>
+    <footer class="footer" ref = "footer">
+      <span style="margin-right: 2rem;">(c) 2021 by Mandy Chien</span>
     </footer>
   </div>
 </template>
 
 <script>
-import Vue from 'vue'
 import axios from 'axios';
-import './style.scss';
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { fas } from "@fortawesome/free-solid-svg-icons";
 
 export default {
   name: 'App',
   components: {
     
   },
-  data: {
-    mangaList: [],
-    showList: [],
-    loading: true,
-    errors: [],
-    category: require('./category'),
-    school: false,
-    categorySelected: []
+  data: function() {
+    return {
+      mangaList: [],
+      showList: [],
+      loading: true,
+      errors: [],
+      category: require('./category'),
+      school: false,
+      categorySelected: []
+    }
   },
   created: function() {
     if (screen.width <= 500) {
@@ -96,10 +99,11 @@ export default {
     }
   },
   mounted: function() {
-    document.getElementsByTagName("body")[0].style.display = "block";
-    axios.get(`https://spreadsheets.google.com/feeds/list/1IZ-cGXnLVp6tv9JxgQh1lZiuUEZ7SQOK8ihrCXJ8Cc8/1/public/values?alt=json`)
+    //document.getElementsByTagName("body")[0].style.display = "block";
+    axios.get(`https://docs.google.com/spreadsheets/d/e/2PACX-1vR3QWEvIbZNPvtcf-RPzPscQ-hIPUPD33G-M5pJoZ1PpckCbC0tOcA03igkFGRsCzWZNM9bok8T9dM_/pub?output=csv`)
     .then(response => {
-      var d = response.data.feed.entry;
+      console.log(response);
+      /*var d = response.data.feed.entry;
       for(var i in d) {
         var item = {};
         item.jpname = d[i].gsx$jpname.$t;
@@ -114,14 +118,14 @@ export default {
         //Shuffle
         this.showList.sort(() => Math.random() - 0.5);
         this.loading = false;
-      }
+      }*/
     })
     .catch(e => {
       this.errors.push(e)
     })
   },
   methods: {
-    handleScroll: function(event) {
+    handleScroll: function() {
       //Show scroll to top button when scrolling
       if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
         document.getElementById('scrollTop').style.display = "flex";
