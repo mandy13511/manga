@@ -1,5 +1,9 @@
 <template>
   <div id="app">
+  <header class = "header">
+    <img src = "./img/navbar_logo.png" style = "object-fit: cover; height: 85%;" alt = "少女漫畫推薦清單">
+  </header>
+  <main>
     <div class="filter-nav">
       <div class="container btn-area">
         <button v-for="(item, index) of category"
@@ -66,6 +70,7 @@
     <footer class="footer" ref = "footer">
       <span style="margin-right: 2rem;">(c) 2021 by Mandy Chien</span>
     </footer>
+  </main>
   </div>
 </template>
 
