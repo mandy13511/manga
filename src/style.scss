@@ -84,12 +84,6 @@ html, body {
   }
 }
 
-@media screen and (max-device-width: 500px) {
-  .content-c {
-    max-height: 2.5rem;
-  }
-}
-
 .content-d {
   grid-area: score;
   margin-left: auto;
